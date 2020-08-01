@@ -4,12 +4,12 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserModel extends Model
+class CartModel extends Model
 {
-    ////// 指定表明
-    protected $table="user";
+    //////// 指定表明
+    protected $table="cart";
     // 指定主键id
-    protected $primaryKey="user_id";
+    protected $primaryKey="cart_id";
     // 关闭时间chuo1
     public $timestamps = false;
     // 黑名单

@@ -35,5 +35,8 @@ Route::post("goods/logindo","UserController@logindo");
 //注册
 Route::post("goods/regdo","UserController@regdo");
 Route::get("goods/login_out","UserController@login_out");//退出登录
-
+//购物车
+Route::get("/cart/{id}","UserController@cart");
+//商品详情页面
+Route::get("/detail/{id}","UserController@detail");
 

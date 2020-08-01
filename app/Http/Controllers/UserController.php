@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\UserModel;
+use App\Model\CartModel;
+use App\Model\GoodsModel;
 
 class UserController extends Controller
 {
@@ -51,5 +53,27 @@ class UserController extends Controller
         header("refresh:3;url=http://api.1911.com/goods");
         echo "退出成功...";
     }
-    //
+    //商品详情页
+    public function detail($goods_id){
+        //根据商品id查询goods表
+        $goodsinfo = GoodsModel::where('goods_id',$goods_id)->first();
+
+    }
+    /**
+     * 商品列表
+     */
+    public function product(Request $request)
+    {
+        $goods_name = $request->input('goods_name');
+        $where = [];
+        if(!empty($goods_name)){
+            $where[]=['goods_name','like',"%$goods_name%"];
+        }
+        $prolist=GoodsModel::where($where)->orderby('goods_id','DESC')->paginate(6);
+        return view('cart/product',['prolist'=>$prolist,'goods_name'=>$goods_name]);
+    }
+
+
 }
+
+
